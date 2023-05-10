@@ -1,0 +1,34 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+    - name: Update repository
+      apt: update_cache=true
+      become: yes
+
+    - name: Installs necessary packages
+      apt:
+        pkg: ["apache2", "libapache2-mod-php", "git"]
+        state: latest
+        update_cache: true
+        
+    - name: Create web directory
+      file: path=/var/www/html mode=775 state=directory
+
+    - name: Copy nginx configuration 
+      template: src=nginx.conf dest=/etc/nginx/conf.d/default.conf
+
+    - name: Copy index.html 
+      template: src=index.html dest=/var/www/html/index.html
+      notify:
+        - restart apache
+
+  handlers:
+    - name: start nginx
+      service: name=nginx state=started
+
+    - name: reload nginx
+      service: name=nginx state=reloaded
+
+    - name: restart nginx
+      service: name=nginx state=restarted

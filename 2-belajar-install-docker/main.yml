@@ -1,0 +1,43 @@
+---
+- name: Install Docker for Server
+  hosts: development
+  become: true
+
+  tasks:
+    - name: Install python 
+      apt:
+        name: python3
+        state: latest
+        # VERSI YANG KALIAN DEFINDN DI NAME (TAPI KALAU DIKOSONGINNN AKAN KE LATEST)
+
+    - name: Install package 
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl 
+          - gnupg 
+        state: latest
+        # OTOMATIS DOWNLOAD KE VERSI TERTINGGI
+
+    - name: add apt key 
+      apt_key:
+      # DOWNLOAD KEY BUAT APT
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: add docker repository
+      apt_repository:
+      # UNTUK NAMBAH REPOSITORY KE APT
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+    
+    - name: install docker 
+      apt:
+        pkg: 
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io 
+          - docker-buildx-plugin 
+          - docker-compose-plugin
+        state: latest

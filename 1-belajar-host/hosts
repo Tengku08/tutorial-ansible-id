@@ -1,0 +1,12 @@
+[ubuntu]
+host0 ansible_host=192.168.1.1 ansible_user=ubuntu ansible_password=blabla 
+host1 ansible_host=192.368.43.4 
+
+[windows]
+host0 ansible_host=180.100.1.2 ansible_user=ubuntu ansible_password=blabla 
+host1 ansible_host=180.100.1.1 
+
+[pem]
+host0 ansible_host=180.100.1.2 ansible_user=ubuntu ansible_ssh_private_key_file=path/to/pem
+
+// nama ip/hostname username password 

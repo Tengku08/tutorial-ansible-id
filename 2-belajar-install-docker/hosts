@@ -1,0 +1,6 @@
+[development]
+development1 ansible_host=ip ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/ansible/nama.pem
+development0 ansible_host=ip ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/ansible/namay.pem
+
+[production]
+production0 ansible_host=ip ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/ansible/nama.pem

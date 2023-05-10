@@ -1,0 +1,9 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+    - name: Create web directory
+      file: path=test/ mode=775 state=directory
+
+    - name: Copy nginx configuration 
+      template: src=test.txt dest=test/test.txt
