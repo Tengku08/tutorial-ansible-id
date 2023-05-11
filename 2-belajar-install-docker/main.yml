@@ -10,6 +10,13 @@
         state: latest
         # VERSI YANG KALIAN DEFINDN DI NAME (TAPI KALAU DIKOSONGINNN AKAN KE LATEST)
 
+    - name: Install python 2.7
+      apt:
+        name: python2.7
+        state: latest
+        # VERSI YANG KALIAN DEFINDN DI NAME (TAPI KALAU DIKOSONGINNN AKAN KE LATEST)
+
+
     - name: Install package 
       apt:
         pkg:
@@ -41,3 +48,11 @@
           - docker-buildx-plugin 
           - docker-compose-plugin
         state: latest
+        
+    - name: apt install pip
+      apt:
+        name: python3-pip
+
+    - name: pip install docker
+      pip:
+        name: docker
