@@ -1,0 +1,12 @@
+---
+- hosts: development
+  become: yes
+  vars:
+    namafile: test.txt
+
+  tasks:
+    - name: Create web directory
+      file: path=test/ mode=775 state=directory
+
+    - name: Copy file
+      template: src={{ namafile }} dest=test/{{ namafile }}

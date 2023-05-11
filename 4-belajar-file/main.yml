@@ -1,9 +1,18 @@
 ---
-- hosts: web
-  become: yes
-  tasks:
-    - name: Create web directory
-      file: path=test/ mode=775 state=directory
+- name: Deploy landing page
+  hosts: webserver
+  become: true
 
-    - name: Copy nginx configuration 
-      template: src=test.txt dest=test/test.txt
+  tasks:
+    - name: Pull landing page image from Docker Hub
+      docker_image:
+        name: ikanpaus/landingpage:v4
+        state: present
+
+    - name: Run landing page container
+      docker_container:
+        name: landingpage
+        image: ikanpaus/landingpage:v4
+        state: started
+        ports:
+          - "80:80"
