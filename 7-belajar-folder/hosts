@@ -1,0 +1,2 @@
+[development]
+development1 ansible_host=52.63.147.53 ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/ansible/sy-key.pem

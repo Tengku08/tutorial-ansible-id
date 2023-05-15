@@ -1,0 +1,6 @@
+---
+- name: Deploy landing page
+  hosts: development
+  become: true
+  roles:
+    - {{roles-menus}}

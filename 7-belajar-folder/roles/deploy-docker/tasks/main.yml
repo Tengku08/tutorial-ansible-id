@@ -1,0 +1,18 @@
+---
+    - name: Pull landing page image from Docker Hub
+      docker_image:
+        name: ikanpaus/landingpage:{{version}}
+        state: present
+
+    - name: stop container
+      docker-image:
+        name: ikanpaus/landingpage:{{version}}
+        state: present
+
+    - name: Run landing page container
+      docker_container:
+        name: landingpage
+        image: ikanpaus/landingpage:{{version}}
+        state: started
+        ports:
+          - "80:80"
